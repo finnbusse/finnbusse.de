@@ -1,9 +1,10 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    root: './public', // Der Ordner, in dem `index.html` liegt
+    root: './public',
     build: {
-        outDir: '../dist', // Ausgabeort für den Build
-        emptyOutDir: true, // Löscht den `dist`-Ordner vor jedem neuen Build
+        outDir: '../dist',
+        emptyOutDir: true,
+        assetsDir: 'styles', // Verschiebt CSS in `dist/styles`
     },
 });
