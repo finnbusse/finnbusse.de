@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-    server: {
-        open: true, // Öffnet den Browser automatisch
+    root: './public', // Der Ordner, in dem `index.html` liegt
+    build: {
+        outDir: '../dist', // Ausgabeort für den Build
+        emptyOutDir: true, // Löscht den `dist`-Ordner vor jedem neuen Build
     },
 });
