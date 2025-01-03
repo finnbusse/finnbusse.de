@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="de" x-data="{ switcher: translationSwitcher() }">
+<html lang="en" x-data="translationSwitcher()">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +16,8 @@
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/custom.css" />
 
-    <!-- JavaScript -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script type="module" crossorigin src="/assets/index-ufttGdod.js"></script>
+    <!-- JavaScript -->
+  <script type="module" crossorigin src="/assets/index-xUAZRQbM.js"></script>
 </head>
 
 <body class="relative font-sans bg-gray-100 text-gray-800">
@@ -58,6 +58,7 @@
   NAVBAR
   ========================================
 -->
+<!-- NAVBAR -->
 <nav class="fixed w-full top-0 h-16 flex items-center bg-transparent z-50">
     <div class="container mx-auto flex justify-center items-center relative h-full">
         <!-- Link-Buttons (zentriert) -->
@@ -66,16 +67,14 @@
                 <button
                         role="link"
                         class="relative font-bold text-blue-500 dark:text-white
-                   after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
-                   after:origin-bottom-right after:scale-x-0
-                   after:bg-neutral-800 dark:after:bg-neutral-100
-                   after:transition-transform after:duration-300
-                   after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
-                   hover:after:origin-bottom-left hover:after:scale-x-100"
+                        after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
+                        after:origin-bottom-right after:scale-x-0
+                        after:bg-neutral-800 dark:after:bg-neutral-100
+                        after:transition-transform after:duration-300
+                        after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
+                        hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#about'"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.about"
                 >
-                    <!-- Fallback: „Über Mich“ -->
                     Über Mich
                 </button>
             </li>
@@ -83,16 +82,14 @@
                 <button
                         role="link"
                         class="relative font-bold text-blue-500 dark:text-white
-                   after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
-                   after:origin-bottom-right after:scale-x-0
-                   after:bg-neutral-800 dark:after:bg-neutral-100
-                   after:transition-transform after:duration-300
-                   after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
-                   hover:after:origin-bottom-left hover:after:scale-x-100"
+                        after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
+                        after:origin-bottom-right after:scale-x-0
+                        after:bg-neutral-800 dark:after:bg-neutral-100
+                        after:transition-transform after:duration-300
+                        after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
+                        hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#projects'"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.projects"
                 >
-                    <!-- Fallback: „Projekte“ -->
                     Projekte
                 </button>
             </li>
@@ -100,16 +97,14 @@
                 <button
                         role="link"
                         class="relative font-bold text-blue-500 dark:text-white
-                   after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
-                   after:origin-bottom-right after:scale-x-0
-                   after:bg-neutral-800 dark:after:bg-neutral-100
-                   after:transition-transform after:duration-300
-                   after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
-                   hover:after:origin-bottom-left hover:after:scale-x-100"
+                        after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
+                        after:origin-bottom-right after:scale-x-0
+                        after:bg-neutral-800 dark:after:bg-neutral-100
+                        after:transition-transform after:duration-300
+                        after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
+                        hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#skills'"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.skills"
                 >
-                    <!-- Fallback: „Skill Matrix“ -->
                     Skill Matrix
                 </button>
             </li>
@@ -117,71 +112,33 @@
 
         <!-- Rechts: Language-Dropdown + Dark/Light Toggle -->
         <div class="absolute right-5 flex items-center space-x-4">
-
-            <!-- Language-Dropdown (AlpineJS) -->
-            <div class="min-w-[120px] relative" @click.away="switcher.menuToggle=false">
-                <button
-                        class="bg-white text-gray-500 dark:bg-gray-700 dark:text-gray-100
-                   rounded shadow-lg py-2 pr-3 pl-5 focus:outline-none h-10
-                   flex items-center"
-                        @click.prevent="switcher.menuToggle=!switcher.menuToggle"
-                >
-                    <span class="inline-block mr-2" x-text="switcher.countries[switcher.selected].emoji"></span>
-                    <span class="fa fa-chevron-down"></span>
+            <!-- Language Dropdown -->
+            <div class="relative" id="language-dropdown">
+                <button class="bg-white text-gray-500 dark:bg-gray-700 dark:text-gray-100 rounded shadow-lg py-2 pr-3 pl-5 focus:outline-none h-10 flex items-center" id="dropdown-button">
+                    <span id="selected-language">🇬🇧 English</span>
+                    <span class="fa fa-chevron-down ml-2"></span>
                 </button>
-
-                <!-- Dropdown Menu -->
-                <div
-                        class="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100
-                   shadow-md rounded text-sm absolute mt-2 top-10 right-0 min-w-full w-48 z-30
-                   transition-all"
-                        x-show="switcher.menuToggle"
-                        x-transition:enter="transition ease duration-300 transform"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease duration-300 transform"
-                        x-transition:leave-start="opacity-100 translate-y-0"
-                        x-transition:leave-end="opacity-0 translate-y-4"
-                >
-            <span
-                    class="absolute top-0 right-0 w-3 h-3 bg-white dark:bg-gray-700
-                     transform rotate-45 -mt-1 mr-3">
-            </span>
-                    <div class="bg-white dark:bg-gray-700 overflow-auto rounded w-full relative z-10">
-                        <ul class="list-reset">
-                            <template x-for="(item, idx) in switcher.countries" :key="idx">
-                                <li>
-                                    <a
-                                            href="#"
-                                            class="px-4 py-2 flex hover:bg-gray-100 dark:hover:bg-gray-600
-                             no-underline hover:no-underline transition-colors duration-100"
-                                            @click.prevent="switcher.menuToggle=false; switcher.selected=idx;"
-                                    >
-                                        <span class="inline-block mr-2" x-text="item.emoji"></span>
-                                        <span class="inline-block" x-text="item.label"></span>
-                                    </a>
-                                </li>
-                            </template>
-                        </ul>
-                    </div>
+                <div class="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 shadow-md rounded text-sm absolute mt-2 top-full right-0 w-48 hidden" id="dropdown-menu">
+                    <ul>
+                        <li>
+                            <a href="#" class="px-4 py-2 flex hover:bg-gray-100 dark:hover:bg-gray-600" data-lang="en" data-flag="🇬🇧">🇬🇧 English</a>
+                        </li>
+                        <li>
+                            <a href="#" class="px-4 py-2 flex hover:bg-gray-100 dark:hover:bg-gray-600" data-lang="de" data-flag="🇩🇪">🇩🇪 German</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Dark/Light Toggle Button (ID = 'darkmode-btn') -->
-            <button
-                    id="darkmode-btn"
-                    class="h-10 px-4 py-2 border rounded text-sm
-    text-slate-700 border-slate-700 hover:bg-slate-700 hover:text-white
-    dark:text-slate-200 dark:border-slate-200 dark:hover:bg-slate-200 dark:hover:text-black
-    transition flex items-center"
-            >
+            <!-- Dark/Light Toggle Button -->
+            <button id="darkmode-btn" class="h-10 px-4 py-2 border rounded text-sm transition">
                 Dark/Light
             </button>
-
-
         </div>
     </div>
 </nav>
+
+
 
 <!--
   ========================================
