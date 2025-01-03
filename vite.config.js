@@ -1,16 +1,9 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    root: "public", // Der Quellordner
-    base: "/", // Basis-URL für alle Ressourcen
+    root: 'public',         // Sagt Vite, dass deine index.html in /public liegt
     build: {
-        outDir: "../dist", // Zielverzeichnis
-        emptyOutDir: true, // Löscht vorherige Builds
-        assetsDir: "static", // Alle Assets werden im "static"-Ordner gespeichert
-        rollupOptions: {
-            input: {
-                main: "./public/index.html", // Haupt-HTML-Datei
-            },
-        },
+        outDir: '../dist',    // Baut das Ergebnis in ../dist (relativ zum root)
+        emptyOutDir: true,
     }
 });
