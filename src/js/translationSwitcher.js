@@ -1,11 +1,13 @@
 // translationSwitcher.js
 // Baut auf window.TRANSLATIONS auf
+console.log("ts.js loaded");
+
 
 window.translationSwitcher = function() {
     return {
-        // Default = 0 => en
+
         selected: 0,
-        // Zwei Sprachen
+
         countries: [
             {
                 label: "English",

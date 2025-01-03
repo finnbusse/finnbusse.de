@@ -1,8 +1,12 @@
-import {defineConfig} from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/',
+    root: '.', // Projekt-Root
+    publicDir: 'public', // Verzeichnis für statische Dateien
     build: {
-        outDir: 'dist',
+        outDir: 'dist', // Ausgabeordner
+        rollupOptions: {
+            input: './index.html', // Einstiegspunkt
+        },
     },
 });

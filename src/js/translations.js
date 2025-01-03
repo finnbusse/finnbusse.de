@@ -1,5 +1,6 @@
 // translations.js
 // Definiert window.TRANSLATIONS = {...} für alle Texte
+console.log("translations.js loaded");
 
 window.TRANSLATIONS = {
     en: {

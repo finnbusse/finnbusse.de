@@ -1,4 +1,5 @@
 const typingText = document.getElementById("typing-text");
+console.log("Typing.js loaded");
 
 const texts = [
     { text: "Web Developer",    color: "color-1" },

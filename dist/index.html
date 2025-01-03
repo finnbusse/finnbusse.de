@@ -2,37 +2,22 @@
 <html lang="en" x-data="{ switcher: translationSwitcher() }">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finn Busse</title>
 
-
+    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="manifest" href="/assets/icons/site.webmanifest">
 
-    <!--
-      1) Tailwind generiertes CSS: ./styles/styles.css
-      2) Dein eigenes Custom-CSS: ./styles/custom.css
-    -->
+    <!-- CSS -->
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/custom.css" />
 
-    <!-- Font Awesome für das Herz-Icon im Footer -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!--
-      JS-Dateien (keine Inline-Scripts):
-        1) translations.js (definiert window.TRANSLATIONS)
-        2) translationSwitcher.js (definiert window.translationSwitcher())
-        3) AlpineJS
-        4) theme.js (Dark/Light)
-        5) typing.js (Typing)
-      Reihenfolge ist wichtig!
-    -->
+    <!-- JavaScript -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  <script type="module" crossorigin src="/assets/index-DEJxLMJf.js"></script>
+  <script type="module" crossorigin src="/assets/index-ufttGdod.js"></script>
 </head>
 
 <body class="relative font-sans bg-gray-100 text-gray-800">
@@ -186,12 +171,13 @@
             <button
                     id="darkmode-btn"
                     class="h-10 px-4 py-2 border rounded text-sm
-                 text-slate-700 border-slate-700 hover:bg-slate-700 hover:text-white
-                 dark:text-slate-200 dark:border-slate-200 dark:hover:bg-slate-200 dark:hover:text-black
-                 transition flex items-center"
+    text-slate-700 border-slate-700 hover:bg-slate-700 hover:text-white
+    dark:text-slate-200 dark:border-slate-200 dark:hover:bg-slate-200 dark:hover:text-black
+    transition flex items-center"
             >
                 Dark/Light
             </button>
+
 
         </div>
     </div>
