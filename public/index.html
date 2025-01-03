@@ -15,37 +15,23 @@
     <!-- Font Awesome für das Herz-Icon im Footer -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- AlpineJS für das Language-Dropdown -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
     <!--
-      Verhindert Lade-Glitches bei Dark-/Light-Mode
-      (Kannst du wahlweise in theme.js auslagern)
+      JS-Dateien (keine Inline-Scripts):
+        1) translations.js (definiert window.TRANSLATIONS)
+        2) translationSwitcher.js (definiert window.translationSwitcher())
+        3) AlpineJS
+        4) theme.js (Dark/Light)
+        5) typing.js (Typing)
+      Reihenfolge ist wichtig!
     -->
-    <script>
-        (function() {
-            const html = document.documentElement;
-            const isLightOrAuto =
-                localStorage.getItem('hs_theme') === 'light'
-                || (localStorage.getItem('hs_theme') === 'auto'
-                    && !window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-            const isDarkOrAuto =
-                localStorage.getItem('hs_theme') === 'dark'
-                || (localStorage.getItem('hs_theme') === 'auto'
-                    && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-            if (isLightOrAuto && html.classList.contains('dark')) {
-                html.classList.remove('dark');
-            } else if (isDarkOrAuto && !html.classList.contains('dark')) {
-                html.classList.add('dark');
-            }
-        })();
-    </script>
+    <script src="./static/js/translations.js" defer></script>
+    <script src="./static/js/translationSwitcher.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="./static/js/theme.js" defer></script>
+    <script src="./static/js/typing.js" defer></script>
 </head>
 
 <body class="relative font-sans bg-gray-100 text-gray-800">
-
 <!--
   ========================================
   LIGHT-BACKGROUND (fixiert)
@@ -80,13 +66,12 @@
 
 <!--
   ========================================
-  NAVBAR: Transparent, schattenlos
-  Zentrierte Buttons, rechts Language & Darkmode
+  NAVBAR
   ========================================
 -->
 <nav class="fixed w-full top-0 h-16 flex items-center bg-transparent z-50">
     <div class="container mx-auto flex justify-center items-center relative h-full">
-        <!-- Link-Buttons zentriert -->
+        <!-- Link-Buttons (zentriert) -->
         <ul class="flex space-x-8">
             <li>
                 <button
@@ -99,7 +84,9 @@
                    after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
                    hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#about'"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.about"
                 >
+                    <!-- Fallback: „Über Mich“ -->
                     Über Mich
                 </button>
             </li>
@@ -114,7 +101,9 @@
                    after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
                    hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#projects'"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.projects"
                 >
+                    <!-- Fallback: „Projekte“ -->
                     Projekte
                 </button>
             </li>
@@ -129,7 +118,9 @@
                    after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
                    hover:after:origin-bottom-left hover:after:scale-x-100"
                         onclick="location.href='#skills'"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].navbar.skills"
                 >
+                    <!-- Fallback: „Skill Matrix“ -->
                     Skill Matrix
                 </button>
             </li>
@@ -147,8 +138,9 @@
                         @click.prevent="switcher.menuToggle=!switcher.menuToggle"
                 >
                     <span class="inline-block mr-2" x-text="switcher.countries[switcher.selected].emoji"></span>
-                    <span class="fa fa-chevron-down"></span> <!-- FontAwesome Icon -->
+                    <span class="fa fa-chevron-down"></span>
                 </button>
+
                 <!-- Dropdown Menu -->
                 <div
                         class="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100
@@ -186,7 +178,7 @@
                 </div>
             </div>
 
-            <!-- Dark/Light Toggle Button (Tailwind), mit ID = 'darkmode-btn' -->
+            <!-- Dark/Light Toggle Button (ID = 'darkmode-btn') -->
             <button
                     id="darkmode-btn"
                     class="h-10 px-4 py-2 border rounded text-sm
@@ -203,15 +195,23 @@
 
 <!--
   ========================================
-  HEADER + TYPING
+  HEADER + TYPING + Übersetzter Text
   ========================================
 -->
 <header class="typing-container min-h-screen flex flex-col items-center justify-center pt-20">
-    <h1 class="text-6xl font-bold text-blue-500 mb-4 dark:text-white">
+    <h1
+            class="text-6xl font-bold text-blue-500 mb-4 dark:text-white"
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].header.title"
+    >
         Hi, I'm Finn
     </h1>
     <p class="text-3xl dark:text-gray-300">
-        I am a <span id="typing-text" class="typing"></span>
+      <span
+              x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].header.subtitle"
+      >
+        I am a
+      </span>
+        <span id="typing-text" class="typing"></span>
     </p>
 </header>
 
@@ -221,36 +221,71 @@
   ========================================
 -->
 <section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="text-2xl font-bold mb-6">Über mich</h2>
-    <p class="text-center mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
+    <h2
+            class="text-2xl font-bold mb-6"
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.title"
+    >
+        Über mich
+    </h2>
+    <p
+            class="text-center mb-6"
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.intro"
+    >
+        Hier sind meine wichtigsten Bildungsabschnitte:
+    </p>
     <div class="timeline space-y-4">
         <div class="timeline-item">
             <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3 class="font-semibold text-lg">vsl. 2027 – Abitur</h3>
+                <h3
+                        class="font-semibold text-lg"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.abiturYear"
+                >
+                    vsl. 2027 – Abitur
+                </h3>
                 <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3 class="font-semibold text-lg">2024-heute – Gymnasiale Oberstufe</h3>
+                <h3
+                        class="font-semibold text-lg"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymYear"
+                >
+                    2024-heute – Gymnasiale Oberstufe
+                </h3>
                 <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3 class="font-semibold text-lg">Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
+                <h3
+                        class="font-semibold text-lg"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.praktikum"
+                >
+                    Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum
+                </h3>
                 <p class="text-sm">Cercare Medical, Århus, Denmark</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3 class="font-semibold text-lg">2018-heute – Gymnasium</h3>
+                <h3
+                        class="font-semibold text-lg"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymSince2018"
+                >
+                    2018-heute – Gymnasium
+                </h3>
                 <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3 class="font-semibold text-lg">2014-2018 – Grundschule</h3>
+                <h3
+                        class="font-semibold text-lg"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.grundschule"
+                >
+                    2014-2018 – Grundschule
+                </h3>
                 <p class="text-sm">.elementary_school, Detmold</p>
             </div>
         </div>
@@ -263,7 +298,12 @@
   ========================================
 -->
 <section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="text-2xl font-bold mb-6">Projekte</h2>
+    <h2
+            class="text-2xl font-bold mb-6"
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].projects.title"
+    >
+        Projekte
+    </h2>
     <div class="project-grid flex flex-wrap gap-4 justify-center">
         <div class="project-box w-[300px] bg-gray-100 dark:bg-gray-600 rounded shadow overflow-hidden">
             <img
@@ -272,7 +312,12 @@
                     class="w-full h-[150px] object-cover"
             />
             <div class="project-box-content p-4">
-                <h3 class="font-semibold text-xl mb-2">Projekt 1: Portfolio-Website</h3>
+                <h3
+                        class="font-semibold text-xl mb-2"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].projects.proj1"
+                >
+                    Projekt 1: Portfolio-Website
+                </h3>
                 <p class="text-sm">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
@@ -285,7 +330,12 @@
                     class="w-full h-[150px] object-cover"
             />
             <div class="project-box-content p-4">
-                <h3 class="font-semibold text-xl mb-2">GrabbeAI</h3>
+                <h3
+                        class="font-semibold text-xl mb-2"
+                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].projects.grabbeAI"
+                >
+                    GrabbeAI
+                </h3>
                 <p class="text-sm">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
@@ -300,7 +350,12 @@
   ========================================
 -->
 <section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="text-2xl font-bold mb-6">Skill Matrix</h2>
+    <h2
+            class="text-2xl font-bold mb-6"
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].skills.title"
+    >
+        Skill Matrix
+    </h2>
     <div class="space-y-6">
         <div>
             <div class="flex justify-between">
@@ -350,7 +405,7 @@
         <div>
             <div class="flex justify-between">
                 <span>C++</span>
-                <span>geplant - 0%</span>
+                <span x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].skills.cpp"></span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
                 <div class="bg-blue-950-500 h-full" style="width: 0%;"></div>
@@ -365,41 +420,16 @@
   ========================================
 -->
 <footer class="bg-gray-800 text-gray-300 text-center py-6 w-full dark:bg-black dark:text-gray-400">
-    <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
-    <p>Made with <i class="fa fa-heart"></i> by Finn Busse</p>
+    <p
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].footer.rights"
+    >
+        &copy; 2025 Finn Busse. Alle Rechte vorbehalten.
+    </p>
+    <p
+            x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].footer.madeWith"
+    >
+        Made with <i class="fa fa-heart"></i> by Finn Busse
+    </p>
 </footer>
-
-<!--
-  ========================================
-  SCRIPTS
-  ========================================
--->
-<!-- 1) translationSwitcher => Emojis '🇬🇧' | '🇩🇪' -->
-<script>
-    let translationSwitcher = function() {
-        return {
-            selected: 0,
-            countries: [
-                {
-                    label: 'English',
-                    emoji: '🇬🇧',
-                },
-                {
-                    label: 'German',
-                    emoji: '🇩🇪',
-                }
-            ],
-            menuToggle: false
-        }
-    }
-</script>
-
-<!-- 2) theme.js => Du implementierst dort das Klick-Event auf #darkmode-btn.
-       togglest .dark, speicherst localStorage('hs_theme','dark'|'light').
--->
-<script type="module" src="./static/js/theme.js"></script>
-
-<!-- 3) typing.js => Typing-Animation -->
-<script type="module" src="./static/js/typing.js"></script>
 </body>
 </html>
