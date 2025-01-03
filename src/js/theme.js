@@ -1,6 +1,9 @@
 // theme.js
 
+
 // 1) Pre-Load Glitch verhindern
+
+
 (function() {
     const html = document.documentElement;
     const isLightOrAuto =
