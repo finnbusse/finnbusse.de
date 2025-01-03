@@ -11,14 +11,16 @@
     -->
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/custom.css" />
+
+    <!-- Font Awesome für das Herz-Icon im Footer -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- AlpineJS für das Language-Dropdown -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
     <!--
-      Vorab-Code: verhindert Lade-Glitches bei Dark-/Light-Mode
-      Falls du das in theme.js auslagern willst, gerne.
+      Verhindert Lade-Glitches bei Dark-/Light-Mode
+      (Kannst du wahlweise in theme.js auslagern)
     -->
     <script>
         (function() {
@@ -78,7 +80,7 @@
 
 <!--
   ========================================
-  NAVIGATION (transparent, schattenlos)
+  NAVBAR: Transparent, schattenlos
   Zentrierte Buttons, rechts Language & Darkmode
   ========================================
 -->
@@ -137,10 +139,11 @@
         <div class="absolute right-5 flex items-center space-x-4">
 
             <!-- Language-Dropdown (AlpineJS) -->
-            <div class="min-w-[120px] relative pb-5" @click.away="switcher.menuToggle=false">
+            <div class="min-w-[120px] relative" @click.away="switcher.menuToggle=false">
                 <button
                         class="bg-white text-gray-500 dark:bg-gray-700 dark:text-gray-100
-                   rounded shadow-lg py-2 pr-3 pl-5 focus:outline-none"
+                   rounded shadow-lg py-2 pr-3 pl-5 focus:outline-none h-10
+                   flex items-center"
                         @click.prevent="switcher.menuToggle=!switcher.menuToggle"
                 >
                     <span class="inline-block mr-2" x-text="switcher.countries[switcher.selected].emoji"></span>
@@ -149,7 +152,7 @@
                 <!-- Dropdown Menu -->
                 <div
                         class="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100
-                   shadow-md rounded text-sm absolute mt-2 top-0 right-0 min-w-full w-48 z-30
+                   shadow-md rounded text-sm absolute mt-2 top-10 right-0 min-w-full w-48 z-30
                    transition-all"
                         x-show="switcher.menuToggle"
                         x-transition:enter="transition ease duration-300 transform"
@@ -183,17 +186,13 @@
                 </div>
             </div>
 
-            <!-- Dark/Light Toggle Button (Tailwind) -->
-            <!-- Der ID = 'darkmode-btn',
-                 du kannst in theme.js darauf lauschen (click),
-                 toggeln, localStorage('hs_theme'), etc.
-            -->
+            <!-- Dark/Light Toggle Button (Tailwind), mit ID = 'darkmode-btn' -->
             <button
                     id="darkmode-btn"
-                    class="px-4 py-2 border rounded text-sm
+                    class="h-10 px-4 py-2 border rounded text-sm
                  text-slate-700 border-slate-700 hover:bg-slate-700 hover:text-white
                  dark:text-slate-200 dark:border-slate-200 dark:hover:bg-slate-200 dark:hover:text-black
-                 transition"
+                 transition flex items-center"
             >
                 Dark/Light
             </button>
@@ -218,7 +217,7 @@
 
 <!--
   ========================================
-  ABOUT ME
+  ABOUT ME (vollständig)
   ========================================
 -->
 <section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
@@ -395,7 +394,9 @@
     }
 </script>
 
-<!-- 2) theme.js => Hier implementierst du den toggle an #darkmode-btn / localStorage -->
+<!-- 2) theme.js => Du implementierst dort das Klick-Event auf #darkmode-btn.
+       togglest .dark, speicherst localStorage('hs_theme','dark'|'light').
+-->
 <script type="module" src="./static/js/theme.js"></script>
 
 <!-- 3) typing.js => Typing-Animation -->

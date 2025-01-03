@@ -1,21 +1,16 @@
 let translationSwitcher = function() {
     return {
         selected: 0,
-
         countries: [
             {
                 label: 'English',
-                lang: 'en',
-                flag: 'gb',
+                emoji: '🇬🇧',
             },
-
             {
                 label: 'German',
-                lang: 'de',
-                flag: 'de',
-            },
-
+                emoji: '🇩🇪',
+            }
         ],
-        menuToggle: false,
+        menuToggle: false
     }
 }

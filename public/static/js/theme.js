@@ -1,19 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const htmlEl = document.documentElement;
-    const toggleBtn = document.getElementById("toggle-darkmode");
-
-    if (!toggleBtn) {
-        console.warn("[theme.js] -> Kein Button gefunden!");
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('darkmode-btn');
+    if (!btn) {
+        console.warn('[theme.js] -> Button #darkmode-btn nicht gefunden!');
         return;
     }
 
-    toggleBtn.addEventListener("click", () => {
-        if (htmlEl.classList.contains("dark")) {
-            console.log("[theme.js] -> Entferne Dark Mode");
-            htmlEl.classList.remove("dark");
+    btn.addEventListener('click', () => {
+        const htmlEl = document.documentElement;
+        if (htmlEl.classList.contains('dark')) {
+            // Wechsel zu Light
+            htmlEl.classList.remove('dark');
+            localStorage.setItem('hs_theme', 'light');
         } else {
-            console.log("[theme.js] -> Aktiviere Dark Mode");
-            htmlEl.classList.add("dark");
+            // Wechsel zu Dark
+            htmlEl.classList.add('dark');
+            localStorage.setItem('hs_theme', 'dark');
         }
     });
 });
