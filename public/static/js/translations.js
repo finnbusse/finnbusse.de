@@ -9,7 +9,7 @@ window.TRANSLATIONS = {
             skills: "Skill Matrix"
         },
         header: {
-            title: "Hi, I'm Finn",
+            title: "Hey, I'm Finn!",
             subtitle: "I am a"
         },
         about: {
