@@ -1,13 +1,14 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-    root: 'public',         // Sagt Vite, dass deine index.html in /public liegt
+    root: "public", // Setzt den Root auf das Verzeichnis mit der index.html
+    base: "./", // Stellt sicher, dass relative Pfade verwendet werden
     build: {
-        outDir: '../dist',    // Baut das Ergebnis in ../dist (relativ zum root)
-        emptyOutDir: true,
+        outDir: "../dist", // Der Build-Output landet im dist-Ordner (außerhalb von public)
+        emptyOutDir: true, // Löscht dist vor jedem neuen Build
+        assetsDir: "static", // Speichert alle Assets in dist/static/
     },
     server: {
-        // Standard-Port oder was du willst
-        port: 5173,
+        open: true, // Öffnet die App automatisch im Browser
     },
 });
