@@ -1,10 +1,13 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    root: './public',
+    root: 'public',         // Sagt Vite, dass deine index.html in /public liegt
     build: {
-        outDir: '../dist',
+        outDir: '../dist',    // Baut das Ergebnis in ../dist (relativ zum root)
         emptyOutDir: true,
-        assetsDir: 'styles', // Verschiebt CSS in `dist/styles`
+    },
+    server: {
+        // Standard-Port oder was du willst
+        port: 5173,
     },
 });

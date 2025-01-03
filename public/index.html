@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Finn Busse</title>
 
-    <!-- Tailwind & (optional) Custom CSS -->
+    <!--
+      Tailwind generiertes CSS: ./styles/styles.css
+      +
+      Dein eigenes Custom-CSS: ./styles/custom.css
+    -->
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/custom.css" />
 </head>
 
-<!--
-  Der .dark-Mode wird per Button-Click
-  im theme.js via <html>.classList.add("dark") toggeln.
--->
 <body class="relative font-sans bg-gray-100 text-gray-800">
 
 <!--
-  LIGHT-BACKGROUND (fixiert, scrollt nicht)
-  -> Nur sichtbar, wenn KEIN .dark-Klasse am <html>
+  ========================================
+  LIGHT-BACKGROUND (fixiert)
+  ========================================
 -->
 <div
-        class="light-bg
-           fixed inset-0 w-full h-full z-[-10]
+        class="fixed inset-0 w-full h-full z-[-10]
            bg-white
            bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),
                linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
@@ -30,28 +30,30 @@
            block
            dark:hidden"
 >
-    <!-- Zusätzlicher radialer Effekt -->
-    <div
-            class="absolute inset-0
-             bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
+    <div class="absolute inset-0
+                bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
     </div>
 </div>
 
 <!--
-  DARK-BACKGROUND (fixiert, scrollt nicht)
-  -> Nur sichtbar, wenn <html class="dark">
+  ========================================
+  DARK-BACKGROUND (fixiert)
+  ========================================
 -->
 <div
-        class="dark-bg
-           fixed inset-0 w-full h-full z-[-10]
+        class="fixed inset-0 w-full h-full z-[-10]
            hidden
            dark:block
            [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
 >
 </div>
 
-<!-- Navigation mit Toggle-Button -->
-<nav class="bg-white shadow-md fixed w-full z-50 top-0 dark:bg-gray-800">
+<!--
+  ========================================
+  NAVIGATION
+  ========================================
+-->
+<nav class="fixed w-full z-50 top-0 bg-white shadow-md dark:bg-gray-800">
     <div class="container mx-auto px-4">
         <ul class="flex justify-center space-x-8 py-4">
             <li>
@@ -72,7 +74,8 @@
                     Skill Matrix
                 </a>
             </li>
-            <!-- Button zum toggeln von Dark/Light -->
+
+            <!-- Button zum manuellen Umschalten (Dark/Light) -->
             <li>
                 <button
                         id="toggle-darkmode"
@@ -88,8 +91,11 @@
     </div>
 </nav>
 
-<!-- Header mit Typing-Animation -->
-<!-- Wir geben hier min-h-screen & pt-20, damit er erstmal bildschirmfüllend ist -->
+<!--
+  ========================================
+  HEADER + TYPING
+  ========================================
+-->
 <header class="typing-container min-h-screen flex flex-col items-center justify-center pt-20">
     <h1 class="text-6xl font-bold text-blue-500 mb-4 dark:text-white">
         Hi, I'm Finn
@@ -99,77 +105,93 @@
     </p>
 </header>
 
-<!-- About Me Section -->
+<!--
+  ========================================
+  ABOUT ME
+  ========================================
+-->
 <section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Über mich</h2>
+    <h2 class="text-2xl font-bold mb-6">Über mich</h2>
     <p class="text-center mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
-    <div class="timeline">
+    <div class="timeline space-y-4">
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>vsl. 2027 – Abitur</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">vsl. 2027 – Abitur</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2024-heute – Gymnasiale Oberstufe</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2024-heute – Gymnasiale Oberstufe</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
-                <p>Cercare Medical, Århus, Denmark</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
+                <p class="text-sm">Cercare Medical, Århus, Denmark</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2018-heute – Gymnasium</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2018-heute – Gymnasium</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2014-2018 – Grundschule</h3>
-                <p>.elementary_school, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2014-2018 – Grundschule</h3>
+                <p class="text-sm">.elementary_school, Detmold</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section -->
+<!--
+  ========================================
+  PROJECTS
+  ========================================
+-->
 <section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Projekte</h2>
-    <div class="project-grid">
-        <div class="project-box">
-            <img src="https://via.placeholder.com/300x150" alt="Project 1" />
-            <div class="project-box-content">
-                <h3>Projekt 1: Portfolio-Website</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua.
+    <h2 class="text-2xl font-bold mb-6">Projekte</h2>
+    <div class="project-grid flex flex-wrap gap-4 justify-center">
+        <div class="project-box w-[300px] bg-gray-100 dark:bg-gray-600 rounded shadow overflow-hidden">
+            <img
+                    src="https://via.placeholder.com/300x150"
+                    alt="Project 1"
+                    class="w-full h-[150px] object-cover"
+            />
+            <div class="project-box-content p-4">
+                <h3 class="font-semibold text-xl mb-2">Projekt 1: Portfolio-Website</h3>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
             </div>
         </div>
-        <div class="project-box">
-            <img src="assets/GrabbeAI.png" alt="GrabbeAI" />
-            <div class="project-box-content">
-                <h3>GrabbeAI</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua.
+        <div class="project-box w-[300px] bg-gray-100 dark:bg-gray-600 rounded shadow overflow-hidden">
+            <img
+                    src="assets/GrabbeAI.png"
+                    alt="GrabbeAI"
+                    class="w-full h-[150px] object-cover"
+            />
+            <div class="project-box-content p-4">
+                <h3 class="font-semibold text-xl mb-2">GrabbeAI</h3>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Skill Matrix Section -->
+<!--
+  ========================================
+  SKILL MATRIX
+  ========================================
+-->
 <section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Skill Matrix</h2>
-    <div class="space-y-10">
+    <h2 class="text-2xl font-bold mb-6">Skill Matrix</h2>
+    <div class="space-y-6">
         <div>
             <div class="flex justify-between">
                 <span>Python</span>
@@ -227,14 +249,23 @@
     </div>
 </section>
 
-<!-- Footer -->
+<!--
+  ========================================
+  FOOTER
+  ========================================
+-->
 <footer class="bg-gray-800 text-gray-300 text-center py-6 w-full dark:bg-black dark:text-gray-400">
     <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
 </footer>
 
-<!-- Button-Only JS -->
+<!--
+  ========================================
+  SCRIPTS
+  ========================================
+-->
+<!-- 1) theme.js -> steuert Dark/Light Toggle -->
 <script type="module" src="./static/js/theme.js"></script>
-<!-- Typing Animation -->
+<!-- 2) typing.js -> Typing Animation -->
 <script type="module" src="./static/js/typing.js"></script>
 </body>
 </html>

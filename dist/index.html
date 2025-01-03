@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Finn Busse</title>
 
-    <!-- Tailwind & (optional) Custom CSS -->
-  <script type="module" crossorigin src="/styles/index-BHLruiBT.js"></script>
-  <link rel="stylesheet" crossorigin href="/styles/index-DOBUUM3B.css">
+    <!-- Hinweis:
+         Mit "npm run dev" wird
+         1) Vite Dev-Server gestartet
+         2) TailwindCSS -> public/styles/styles.css generiert
+    -->
+
+    <!-- Gebautes / generiertes Tailwind CSS -->
+    <!-- Achte darauf, dass beim Dev-Server evtl. noch HMR etc. läuft -->
+  <script type="module" crossorigin src="/styles/index-ChO3GdCl.js"></script>
+  <link rel="stylesheet" crossorigin href="/styles/index-Btdl3hfe.css">
 </head>
+<body class="relative font-sans bg-gray-100 text-gray-800">
 
 <!--
-  <html> wird dynamisch per JS
-  die Klasse "dark" setzen oder entfernen,
-  basierend auf dem System-Theme.
+  =========================================
+    FIXIERTER Light-Hintergrund
+  =========================================
 -->
-<body class="relative font-sans">
-
-<!-- LIGHT-BACKGROUND (sichtbar, wenn keine .dark-Klasse) -->
 <div
-        class="absolute inset-0 -z-10 h-full w-full
+        class="fixed inset-0 w-full h-full z-[-10]
            bg-white
            bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),
                linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
@@ -32,17 +37,25 @@
     </div>
 </div>
 
-<!-- DARK-BACKGROUND (sichtbar, wenn .dark-Klasse vorhanden) -->
+<!--
+  =========================================
+    FIXIERTER Dark-Hintergrund
+  =========================================
+-->
 <div
-        class="absolute inset-0 -z-10 h-full w-full
+        class="fixed inset-0 w-full h-full z-[-10]
            hidden
            dark:block
            [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
 >
 </div>
 
-<!-- Navigation -->
-<nav class="bg-white shadow-md fixed w-full z-50 top-0 dark:bg-gray-800">
+<!--
+  =========================================
+    Navigation
+  =========================================
+-->
+<nav class="fixed w-full z-50 top-0 bg-white shadow-md dark:bg-gray-800">
     <div class="container mx-auto px-4">
         <ul class="flex justify-center space-x-8 py-4">
             <li>
@@ -63,11 +76,31 @@
                     Skill Matrix
                 </a>
             </li>
+
+            <!--
+              Button zum manuellen Umschalten
+              (siehe static/js/theme.js -> toggelt .dark)
+            -->
+            <li>
+                <button
+                        id="toggle-darkmode"
+                        class="px-4 py-2 border rounded text-sm
+                   text-blue-600 border-blue-600 hover:text-white hover:bg-blue-600
+                   dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black
+                   transition"
+                >
+                    Dark Mode umschalten
+                </button>
+            </li>
         </ul>
     </div>
 </nav>
 
-<!-- Header mit Typing Animation -->
+<!--
+  =========================================
+    Header + Typing Animation
+  =========================================
+-->
 <header class="typing-container min-h-screen flex flex-col items-center justify-center pt-20">
     <h1 class="text-6xl font-bold text-blue-500 mb-4 dark:text-white">
         Hi, I'm Finn
@@ -77,77 +110,93 @@
     </p>
 </header>
 
-<!-- About Me Section -->
+<!--
+  =========================================
+    About Me Section
+  =========================================
+-->
 <section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Über mich</h2>
+    <h2 class="category-title text-2xl font-bold mb-6">Über mich</h2>
     <p class="text-center mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
-    <div class="timeline">
+    <div class="timeline space-y-4">
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>vsl. 2027 – Abitur</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">vsl. 2027 – Abitur</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2024-heute – Gymnasiale Oberstufe</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2024-heute – Gymnasiale Oberstufe</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
-                <p>Cercare Medical, Århus, Denmark</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
+                <p class="text-sm">Cercare Medical, Århus, Denmark</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2018-heute – Gymnasium</h3>
-                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2018-heute – Gymnasium</h3>
+                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
-            <div class="timeline-content">
-                <h3>2014-2018 – Grundschule</h3>
-                <p>.elementary_school, Detmold</p>
+            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
+                <h3 class="font-semibold text-lg">2014-2018 – Grundschule</h3>
+                <p class="text-sm">.elementary_school, Detmold</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section -->
+<!--
+  =========================================
+    Projects Section
+  =========================================
+-->
 <section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Projekte</h2>
-    <div class="project-grid">
-        <div class="project-box">
-            <img src="https://via.placeholder.com/300x150" alt="Project 1" />
-            <div class="project-box-content">
-                <h3>Projekt 1: Portfolio-Website</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua.
+    <h2 class="category-title text-2xl font-bold mb-6">Projekte</h2>
+    <div class="project-grid flex flex-wrap gap-4 justify-center">
+        <div class="project-box w-[300px] bg-gray-100 dark:bg-gray-600 rounded shadow overflow-hidden">
+            <img
+                    src="https://via.placeholder.com/300x150"
+                    alt="Project 1"
+                    class="w-full h-[150px] object-cover"
+            />
+            <div class="project-box-content p-4">
+                <h3 class="font-semibold text-xl mb-2">Projekt 1: Portfolio-Website</h3>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
             </div>
         </div>
-        <div class="project-box">
-            <img src="/styles/GrabbeAI-C9gfBig_.png" alt="GrabbeAI" />
-            <div class="project-box-content">
-                <h3>GrabbeAI</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore
-                    et dolore magna aliquyam erat, sed diam voluptua.
+        <div class="project-box w-[300px] bg-gray-100 dark:bg-gray-600 rounded shadow overflow-hidden">
+            <img
+                    src="/styles/GrabbeAI-C9gfBig_.png"
+                    alt="GrabbeAI"
+                    class="w-full h-[150px] object-cover"
+            />
+            <div class="project-box-content p-4">
+                <h3 class="font-semibold text-xl mb-2">GrabbeAI</h3>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr...
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Skill Matrix Section -->
+<!--
+  =========================================
+    Skill Matrix Section
+  =========================================
+-->
 <section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
-    <h2 class="category-title">Skill Matrix</h2>
-    <div class="space-y-10">
+    <h2 class="category-title text-2xl font-bold mb-6">Skill Matrix</h2>
+    <div class="space-y-6">
         <div>
             <div class="flex justify-between">
                 <span>Python</span>
@@ -205,12 +254,19 @@
     </div>
 </section>
 
-<!-- Footer -->
+<!--
+  =========================================
+    Footer
+  =========================================
+-->
 <footer class="bg-gray-800 text-gray-300 text-center py-6 w-full dark:bg-black dark:text-gray-400">
     <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
 </footer>
 
-<!-- Theme Detection JS (Dauerüberwachung) -->
-<!-- Typing-Animation -->
+<!--
+  =========================================
+    JS (theme + typing)
+  =========================================
+-->
 </body>
 </html>

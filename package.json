@@ -4,10 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"npx tailwindcss -i ./src/css/styles.css -o ./public/styles/styles.css --watch\"",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Finn Busse",
   "license": "ISC",
   "description": "",
   "devDependencies": {

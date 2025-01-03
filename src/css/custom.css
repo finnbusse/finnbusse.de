@@ -2,45 +2,103 @@
    Custom Animations & Styles
    ======================= */
 
-/* ---- Typing Animation ---- */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+/*
+  Light Mode (Standard)
+*/
+:root {
+    --color-bg-main: #ffffff;
+    --color-text-main: #333333;
+    --color-box-bg: #ffffff;
+    --color-box-text: #333333;
+    --radial-color: #C9EBFF;
+    --box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-@keyframes blink {
-    50% { border-color: transparent; }
+/*
+  Dark Mode
+  => :root[data-theme="dark"]
+*/
+:root[data-theme="dark"] {
+    --color-bg-main: #1a1a1a;
+    --color-text-main: #eaeaea;
+    --color-box-bg: #2a2a2a;
+    --color-box-text: #ffffff;
+    --radial-color: #39506b;
+    --box-shadow: 0 4px 6px rgba(255,255,255,0.1);
 }
 
+/* Grundlayout / Body-Farbe */
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+}
+
+/*
+  Hintergrund "bg-container"
+  Light => Grid
+  Dark => radial
+*/
+#bg-container {
+    /* LIGHT: Grid-Pattern */
+    background:
+            linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+            linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 6rem 4rem;
+}
+
+/* DARK Mode => radial gradient (#000 -> #63e) */
+:root[data-theme="dark"] #bg-container {
+    background: radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%);
+}
+
+/* ---- Typing Container ---- */
 .typing-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f3f4f6; /* Hellgrau (Tailwind-Farbe: bg-gray-100) */
+    text-align: center;
 }
 
+/* Tipp-Animation */
 .typing {
     display: inline-block;
-    overflow: hidden;
+    position: relative;
     white-space: nowrap;
-    border-right: 3px solid;
+    overflow: hidden;
     font-weight: bold;
     font-size: 1.5rem;
-    animation: typing 3s steps(20, end) infinite, blink 0.7s step-end infinite;
 }
 
-/* Farbakzente für unterschiedliche Typing-Texte */
+/* Cursor-Effekt */
+.typing::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #666;
+    margin-left: 4px;
+    animation: blinkCursor 0.7s infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
+/* Verschiedene Farben für die Tippwörter */
 .color-1 { color: #1E90FF; }
 .color-2 { color: #32CD32; }
 .color-3 { color: #FF6347; }
 .color-4 { color: #FF9900; }
 
-/* ---- Category Boxes, Timeline, Projects, etc. ---- */
+/* Boxes + Layout */
 .category-box {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-box-bg);
+    color: var(--color-box-text);
+    box-shadow: var(--box-shadow);
     border-radius: 10px;
     padding: 40px;
     margin: 120px auto;
@@ -66,23 +124,26 @@
 
 .timeline-content {
     padding: 10px 20px;
-    background-color: #FFF;
-    border: 1px solid #E5E7EB;
+    background-color: var(--color-box-bg);
+    color: var(--color-box-text);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] .timeline-content {
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .timeline-content h3 {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
-    color: #1E40AF; /* Tailwind: text-blue-800 */
 }
 
 .timeline-content p {
     margin: 5px 0 0;
     font-size: 0.9rem;
-    color: #6B7280; /* Tailwind: text-gray-600 */
 }
 
 .project-grid {
@@ -92,8 +153,9 @@
 }
 
 .project-box {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-box-bg);
+    color: var(--color-box-text);
+    box-shadow: var(--box-shadow);
     border-radius: 10px;
     overflow: hidden;
     width: 300px;
@@ -117,5 +179,18 @@
 
 .project-box-content p {
     font-size: 0.9rem;
-    color: #6b7280; /* Tailwind: text-gray-600 */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #ddd;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+:root[data-theme="dark"] footer {
+    background-color: #111;
+    color: #aaa;
 }
