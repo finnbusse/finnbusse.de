@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    root: "public", // Entwicklungs-Root ist public
-    base: "./", // Verwende relative Pfade für Assets
+    root: "public", // Entwicklungs-Root
+    base: "./", // Relative Pfade
     build: {
-        outDir: "../dist", // Build-Output wird in dist gespeichert
-        emptyOutDir: true, // Leert den dist-Ordner vor jedem neuen Build
-        assetsDir: "static", // Alle Assets werden in dist/static gespeichert
+        outDir: "../dist", // Der Output-Ordner für den Build
+        emptyOutDir: true, // Löscht den Ordner vor jedem Build
+        assetsDir: "static", // Stellt sicher, dass alle Assets in "static" landen
         rollupOptions: {
             input: {
                 main: "./public/index.html", // Haupt-HTML
