@@ -1,46 +1,22 @@
-// theme.js
-
-
-// 1) Pre-Load Glitch verhindern
-
-
-(function() {
+(function () {
+    const darkModeSwitch = document.getElementById('darkmode-btn');
     const html = document.documentElement;
-    const isLightOrAuto =
-        localStorage.getItem('hs_theme') === 'light'
-        || (localStorage.getItem('hs_theme') === 'auto'
-            && !window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-    const isDarkOrAuto =
-        localStorage.getItem('hs_theme') === 'dark'
-        || (localStorage.getItem('hs_theme') === 'auto'
-            && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    console.log("Dark Mode Switch loaded:", darkModeSwitch);
 
-    if (isLightOrAuto && html.classList.contains('dark')) {
-        html.classList.remove('dark');
-    } else if (isDarkOrAuto && !html.classList.contains('dark')) {
-        html.classList.add('dark');
-    }
-})();
-
-// 2) Toggle-Button
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("darkmode-btn");
-    if (!btn) {
-        console.warn("[theme.js] -> #darkmode-btn nicht gefunden!");
-        return;
+    const savedTheme = localStorage.getItem('hs_theme');
+    if (savedTheme) {
+        console.log("Saved theme:", savedTheme);
+        html.classList.toggle('dark', savedTheme === 'dark');
+    } else {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        console.log("Default theme:", isDark ? "dark" : "light");
+        html.classList.toggle('dark', isDark);
     }
 
-    btn.addEventListener("click", () => {
-        const htmlEl = document.documentElement;
-        if (htmlEl.classList.contains("dark")) {
-            // Switch to Light
-            htmlEl.classList.remove("dark");
-            localStorage.setItem("hs_theme", "light");
-        } else {
-            // Switch to Dark
-            htmlEl.classList.add("dark");
-            localStorage.setItem("hs_theme", "dark");
-        }
+    darkModeSwitch.addEventListener('click', () => {
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('hs_theme', isDark ? 'dark' : 'light');
+        console.log("Theme toggled:", isDark ? "dark" : "light");
     });
-});
+})();
