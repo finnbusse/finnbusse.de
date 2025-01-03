@@ -1,50 +1,41 @@
-// DOM-Element holen
+// typing.js
 const typingText = document.getElementById("typing-text");
 
-// Texte + Farbklassen
+// Beispieltexte
 const texts = [
-    { text: "Web Developer",    color: "color-1" },
-    { text: "Python Developer", color: "color-2" },
-    { text: "AI Enthusiast",    color: "color-3" },
-    { text: "Student",          color: "color-4" }
+    { text: "Web Developer",    color: "text-blue-500" },
+    { text: "Python Developer", color: "text-green-500" },
+    { text: "AI Enthusiast",    color: "text-red-500" },
+    { text: "Student",          color: "text-yellow-500" }
 ];
 
-// Index
+// Indizes
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
 // Geschwindigkeiten
-const typingSpeed   = 80;   // Tippgeschwindigkeit (ms)
-const deletingSpeed = 50;   // Löschgeschwindigkeit (ms)
-const holdTime      = 1500; // Zeit nach komplettem Wort
+const typingSpeed   = 80;
+const deletingSpeed = 50;
+const holdTime      = 1500;
 
 function updateTyping() {
     const current = texts[textIndex];
     const fullText = current.text;
 
-    // Passende Farbe anwenden
+    // Tailwind-Klasse anpassen
     typingText.className = `typing ${current.color}`;
 
     if (!isDeleting) {
-        // Zeichen hinzufügen
         charIndex++;
         typingText.textContent = fullText.slice(0, charIndex);
-
-        // Wort fertig?
         if (charIndex === fullText.length) {
-            // kurze Pause
-            setTimeout(() => {
-                isDeleting = true;
-            }, holdTime);
+            setTimeout(() => { isDeleting = true; }, holdTime);
         }
     } else {
-        // Löschen
         charIndex--;
         typingText.textContent = fullText.slice(0, charIndex);
-
         if (charIndex === 0) {
-            // Nächster Text
             isDeleting = false;
             textIndex = (textIndex + 1) % texts.length;
         }
@@ -53,9 +44,8 @@ function updateTyping() {
 
 function loop() {
     updateTyping();
-    const delay = isDeleting ? deletingSpeed : typingSpeed;
-    setTimeout(loop, delay);
+    setTimeout(loop, isDeleting ? deletingSpeed : typingSpeed);
 }
 
-// Animation starten
+// Start
 loop();

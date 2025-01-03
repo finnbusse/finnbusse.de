@@ -1,16 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Finn Busse</title>
 
-
-  <link rel="stylesheet" crossorigin href="/styles/index-DcYuxLTC.css">
+    <!-- Tailwind & (optional) Custom CSS -->
+  <script type="module" crossorigin src="/styles/index-BHLruiBT.js"></script>
+  <link rel="stylesheet" crossorigin href="/styles/index-DOBUUM3B.css">
 </head>
-<body class="bg-gray-100 text-center">
-<h1 class="text-4xl font-bold text-blue-500">Hallo, Tailwind CSS!</h1>
-<div class="bg-blue-500 text-white p-4 rounded">Das ist ein Test!</div>
 
+<!--
+  <html> wird dynamisch per JS
+  die Klasse "dark" setzen oder entfernen,
+  basierend auf dem System-Theme.
+-->
+<body class="relative font-sans">
+
+<!-- LIGHT-BACKGROUND (sichtbar, wenn keine .dark-Klasse) -->
+<div
+        class="absolute inset-0 -z-10 h-full w-full
+           bg-white
+           bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),
+               linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
+           bg-[size:6rem_4rem]
+           block
+           dark:hidden"
+>
+    <div class="absolute inset-0
+                bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
+    </div>
+</div>
+
+<!-- DARK-BACKGROUND (sichtbar, wenn .dark-Klasse vorhanden) -->
+<div
+        class="absolute inset-0 -z-10 h-full w-full
+           hidden
+           dark:block
+           [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-white shadow-md fixed w-full z-50 top-0 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <ul class="flex justify-center space-x-8 py-4">
+            <li>
+                <a href="#about"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Über Mich
+                </a>
+            </li>
+            <li>
+                <a href="#projects"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Projekte
+                </a>
+            </li>
+            <li>
+                <a href="#skills"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Skill Matrix
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header mit Typing Animation -->
+<header class="typing-container min-h-screen flex flex-col items-center justify-center pt-20">
+    <h1 class="text-6xl font-bold text-blue-500 mb-4 dark:text-white">
+        Hi, I'm Finn
+    </h1>
+    <p class="text-3xl dark:text-gray-300">
+        I am a <span id="typing-text" class="typing"></span>
+    </p>
+</header>
+
+<!-- About Me Section -->
+<section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
+    <h2 class="category-title">Über mich</h2>
+    <p class="text-center mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>vsl. 2027 – Abitur</h3>
+                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>2024-heute – Gymnasiale Oberstufe</h3>
+                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
+                <p>Cercare Medical, Århus, Denmark</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>2018-heute – Gymnasium</h3>
+                <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>2014-2018 – Grundschule</h3>
+                <p>.elementary_school, Detmold</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
+    <h2 class="category-title">Projekte</h2>
+    <div class="project-grid">
+        <div class="project-box">
+            <img src="https://via.placeholder.com/300x150" alt="Project 1" />
+            <div class="project-box-content">
+                <h3>Projekt 1: Portfolio-Website</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua.
+                </p>
+            </div>
+        </div>
+        <div class="project-box">
+            <img src="/styles/GrabbeAI-C9gfBig_.png" alt="GrabbeAI" />
+            <div class="project-box-content">
+                <h3>GrabbeAI</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skill Matrix Section -->
+<section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
+    <h2 class="category-title">Skill Matrix</h2>
+    <div class="space-y-10">
+        <div>
+            <div class="flex justify-between">
+                <span>Python</span>
+                <span>75%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-blue-500 h-full" style="width: 75%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>Java</span>
+                <span>40%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-green-500 h-full" style="width: 40%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>Kotlin</span>
+                <span>30%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-yellow-500 h-full" style="width: 30%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>HTML/CSS</span>
+                <span>90%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-purple-500 h-full" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>JavaScript</span>
+                <span>20%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-orange-500 h-full" style="width: 20%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>C++</span>
+                <span>geplant - 0%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-blue-950-500 h-full" style="width: 0%;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-gray-300 text-center py-6 w-full dark:bg-black dark:text-gray-400">
+    <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
+</footer>
+
+<!-- Theme Detection JS (Dauerüberwachung) -->
+<!-- Typing-Animation -->
 </body>
 </html>

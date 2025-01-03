@@ -5,56 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Finn Busse</title>
 
-    <!-- Tailwind & Custom CSS -->
+    <!-- Tailwind & (optional) Custom CSS -->
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/custom.css" />
 </head>
-<body class="relative text-gray-800 font-sans">
 
-<!-- FIXED Hintergrund-Layer -->
 <!--
-  Dieses Div ist "fixed" + "inset-0" => immer bildschirmfüllend,
-  -z-10 => liegt hinter allem,
-  so bleibt es sichtbar beim Scrollen.
+  Der .dark-Mode wird per Button-Click
+  im theme.js via <html>.classList.add("dark") toggeln.
+-->
+<body class="relative font-sans bg-gray-100 text-gray-800">
+
+<!--
+  LIGHT-BACKGROUND (fixiert, scrollt nicht)
+  -> Nur sichtbar, wenn KEIN .dark-Klasse am <html>
 -->
 <div
-        class="fixed inset-0 -z-10 w-full h-full
+        class="light-bg
+           fixed inset-0 w-full h-full z-[-10]
            bg-white
            bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),
                linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
-           bg-[size:6rem_4rem]"
+           bg-[size:6rem_4rem]
+           block
+           dark:hidden"
 >
-    <!-- Zusätzliche Radial-Gradient-Fläche -->
-    <div class="absolute inset-0
-                bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
+    <!-- Zusätzlicher radialer Effekt -->
+    <div
+            class="absolute inset-0
+             bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
     </div>
 </div>
 
+<!--
+  DARK-BACKGROUND (fixiert, scrollt nicht)
+  -> Nur sichtbar, wenn <html class="dark">
+-->
+<div
+        class="dark-bg
+           fixed inset-0 w-full h-full z-[-10]
+           hidden
+           dark:block
+           [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+>
+</div>
 
-
-<!-- Navigation -->
-<nav class="bg-white shadow-md fixed w-full z-50 top-0">
+<!-- Navigation mit Toggle-Button -->
+<nav class="bg-white shadow-md fixed w-full z-50 top-0 dark:bg-gray-800">
     <div class="container mx-auto px-4">
         <ul class="flex justify-center space-x-8 py-4">
-            <li><a href="#about" class="text-blue-500 font-bold hover:text-blue-700 transition">Über Mich</a></li>
-            <li><a href="#projects" class="text-blue-500 font-bold hover:text-blue-700 transition">Projekte</a></li>
-            <li><a href="#skills" class="text-blue-500 font-bold hover:text-blue-700 transition">Skill Matrix</a></li>
+            <li>
+                <a href="#about"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Über Mich
+                </a>
+            </li>
+            <li>
+                <a href="#projects"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Projekte
+                </a>
+            </li>
+            <li>
+                <a href="#skills"
+                   class="text-blue-500 font-bold hover:text-blue-700 transition dark:text-white">
+                    Skill Matrix
+                </a>
+            </li>
+            <!-- Button zum toggeln von Dark/Light -->
+            <li>
+                <button
+                        id="toggle-darkmode"
+                        class="px-4 py-2 border rounded text-sm
+                   text-blue-600 border-blue-600 hover:text-white hover:bg-blue-600
+                   dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black
+                   transition"
+                >
+                    Dark Mode umschalten
+                </button>
+            </li>
         </ul>
     </div>
 </nav>
 
 <!-- Header mit Typing-Animation -->
-<header class="typing-container">
-    <h1 class="text-6xl font-bold text-blue-500 mb-4">Hi, I'm Finn</h1>
-    <p class="text-3xl">
+<!-- Wir geben hier min-h-screen & pt-20, damit er erstmal bildschirmfüllend ist -->
+<header class="typing-container min-h-screen flex flex-col items-center justify-center pt-20">
+    <h1 class="text-6xl font-bold text-blue-500 mb-4 dark:text-white">
+        Hi, I'm Finn
+    </h1>
+    <p class="text-3xl dark:text-gray-300">
         I am a <span id="typing-text" class="typing"></span>
     </p>
 </header>
 
 <!-- About Me Section -->
-<section id="about" class="category-box">
+<section id="about" class="category-box bg-white dark:bg-gray-700 dark:text-white">
     <h2 class="category-title">Über mich</h2>
-    <p class="text-center text-gray-600 mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
+    <p class="text-center mb-6">Hier sind meine wichtigsten Bildungsabschnitte:</p>
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-content">
@@ -90,7 +138,7 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="category-box">
+<section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
     <h2 class="category-title">Projekte</h2>
     <div class="project-grid">
         <div class="project-box">
@@ -119,7 +167,7 @@
 </section>
 
 <!-- Skill Matrix Section -->
-<section id="skills" class="category-box">
+<section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
     <h2 class="category-title">Skill Matrix</h2>
     <div class="space-y-10">
         <div>
@@ -180,11 +228,13 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-gray-300 text-center py-6 w-full">
+<footer class="bg-gray-800 text-gray-300 text-center py-6 w-full dark:bg-black dark:text-gray-400">
     <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
 </footer>
 
-<!-- Schöne Typing-Animation -->
+<!-- Button-Only JS -->
+<script type="module" src="./static/js/theme.js"></script>
+<!-- Typing Animation -->
 <script type="module" src="./static/js/typing.js"></script>
 </body>
 </html>

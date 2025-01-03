@@ -1,10 +1,10 @@
+// tailwind.config.js
 module.exports = {
   content: [
     './public/**/*.html',
-    './src/**/*.{js,ts,jsx,tsx}',
+    './public/**/*.js',
   ],
-  theme: {
-    extend: {},
-  },
+  darkMode: 'class',
+  theme: { extend: {} },
   plugins: [],
-};
+}
