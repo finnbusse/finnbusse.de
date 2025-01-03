@@ -1,24 +1,23 @@
 const typingText = document.getElementById("typing-text");
-console.log("Typing.js loaded");
 
 const texts = [
-    { text: "Web Developer",    color: "color-1" },
-    { text: "Python Developer", color: "color-2" },
-    { text: "AI Enthusiast",    color: "color-3" },
-    { text: "Student",          color: "color-4" }
+    { text: "Web Developer",    gradient: "from-blue-500 to-blue-300" },
+    { text: "Python Developer", gradient: "from-green-500 to-green-300" },
+    { text: "AI Enthusiast",    gradient: "from-red-500 to-orange-300" },
+    { text: "Student",          gradient: "from-purple-500 to-purple-300" }
 ];
 
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
-const typingSpeed   = 80;
+const typingSpeed = 80;
 const deletingSpeed = 50;
-const holdTime      = 1500;
+const holdTime = 1500;
 
 function updateTyping() {
     const current = texts[textIndex];
-    typingText.className = `typing ${current.color}`;
+    typingText.className = `bg-clip-text text-transparent bg-gradient-to-r ${current.gradient}`;
 
     const fullText = current.text;
     if (!isDeleting) {
@@ -43,4 +42,5 @@ function loop() {
     updateTyping();
     setTimeout(loop, isDeleting ? deletingSpeed : typingSpeed);
 }
+
 loop();
