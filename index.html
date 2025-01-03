@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,6 +107,9 @@
            block
            dark:hidden"
 >
+    <div
+            class="absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"
+    ></div>
     <div class="absolute inset-0
                 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
     </div>
@@ -131,14 +134,14 @@
   ========================================
 -->
 <!-- NAVBAR -->
-<nav class="fixed w-full top-0 h-16 flex items-center bg-transparent z-50" aria-label="Hauptnavigation">
+<nav class="fixed w-full top-0 h-16 flex items-center bg-transparent z-50 bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur-sm bg-opacity-0 backdrop-saturate-100 backdrop-contrast-100" aria-label="Hauptnavigation">
     <div class="container mx-auto flex justify-center items-center relative h-full">
         <!-- Link-Buttons (zentriert) -->
         <ul class="flex space-x-8">
             <li>
                 <button
                         role="link"
-                        class="relative font-bold text-blue-500 dark:text-white
+                        class="relative font-semibold text-gray-900 dark:text-white
                         after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
                         after:origin-bottom-right after:scale-x-0
                         after:bg-neutral-800 dark:after:bg-neutral-100
@@ -153,7 +156,7 @@
             <li>
                 <button
                         role="link"
-                        class="relative font-bold text-blue-500 dark:text-white
+                        class="relative font-semibold text-gray-900 dark:text-white
                         after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
                         after:origin-bottom-right after:scale-x-0
                         after:bg-neutral-800 dark:after:bg-neutral-100
@@ -168,7 +171,7 @@
             <li>
                 <button
                         role="link"
-                        class="relative font-bold text-blue-500 dark:text-white
+                        class="relative font-semibold text-gray-900 dark:text-white
                         after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
                         after:origin-bottom-right after:scale-x-0
                         after:bg-neutral-800 dark:after:bg-neutral-100
@@ -274,64 +277,61 @@
     >
         Meine bisherige Bildung und Erfahrung:
     </p>
-    <div class="timeline space-y-4">
+    <div class="timeline space-y-6 border-l border-gray-300 dark:border-gray-600 pl-6">
+        <!-- Timeline Item -->
         <div class="timeline-item">
-            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3
-                        class="font-semibold text-lg"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.abiturYear"
-                >
-                    vsl. 2027 – Abitur
-                </h3>
-                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
-            </div>
+            <h3
+                    class="font-semibold text-lg"
+                    x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.abiturYear"
+            >
+                vsl. 2027 – Abitur
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
         </div>
+        <!-- Timeline Item -->
         <div class="timeline-item">
-            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3
-                        class="font-semibold text-lg"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymYear"
-                >
-                    2024-heute – Gymnasiale Oberstufe
-                </h3>
-                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
-            </div>
+            <h3
+                    class="font-semibold text-lg"
+                    x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymYear"
+            >
+                2024-heute – Gymnasiale Oberstufe
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
         </div>
+        <!-- Timeline Item -->
         <div class="timeline-item">
-            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3
-                        class="font-semibold text-lg"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.praktikum"
-                >
-                    Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum
-                </h3>
-                <p class="text-sm">Cercare Medical, Århus, Denmark</p>
-            </div>
+            <h3
+                    class="font-semibold text-lg"
+                    x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.praktikum"
+            >
+                Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Cercare Medical, Århus, Denmark</p>
         </div>
+        <!-- Timeline Item -->
         <div class="timeline-item">
-            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3
-                        class="font-semibold text-lg"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymSince2018"
-                >
-                    2018-heute – Gymnasium
-                </h3>
-                <p class="text-sm">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
-            </div>
+            <h3
+                    class="font-semibold text-lg"
+                    x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.gymSince2018"
+            >
+                2018-heute – Gymnasium
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
         </div>
+        <!-- Timeline Item -->
         <div class="timeline-item">
-            <div class="timeline-content p-4 bg-gray-100 dark:bg-gray-600 rounded shadow">
-                <h3
-                        class="font-semibold text-lg"
-                        x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.grundschule"
-                >
-                    2014-2018 – Grundschule
-                </h3>
-                <p class="text-sm">Grundschule, Detmold</p>
-            </div>
+            <h3
+                    class="font-semibold text-lg"
+                    x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].about.grundschule"
+            >
+                2014-2018 – Grundschule
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Freiligrathschule, Detmold</p>
         </div>
     </div>
 </section>
+
+
 
 <!--
   ========================================
@@ -410,7 +410,7 @@
                 <span>75%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-blue-500 h-full" style="width: 75%;"></div>
+                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-300" style="width: 75%;"></div>
             </div>
         </div>
         <div>
@@ -419,7 +419,7 @@
                 <span>40%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-green-500 h-full" style="width: 40%;"></div>
+                <div class="h-full bg-gradient-to-r from-green-500 to-teal-300" style="width: 40%;"></div>
             </div>
         </div>
         <div>
@@ -428,7 +428,7 @@
                 <span>30%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-yellow-500 h-full" style="width: 30%;"></div>
+                <div class="h-full bg-gradient-to-r from-yellow-500 to-orange-300" style="width: 30%;"></div>
             </div>
         </div>
         <div>
@@ -437,7 +437,7 @@
                 <span>90%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-purple-500 h-full" style="width: 90%;"></div>
+                <div class="h-full bg-gradient-to-r from-purple-500 to-pink-300" style="width: 90%;"></div>
             </div>
         </div>
         <div>
@@ -446,20 +446,21 @@
                 <span>20%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-orange-500 h-full" style="width: 20%;"></div>
+                <div class="h-full bg-gradient-to-r from-orange-500 to-red-300" style="width: 20%;"></div>
             </div>
         </div>
         <div>
             <div class="flex justify-between">
-                <span>C++</span>
-                <span x-text="switcher.translations[ switcher.countries[switcher.selected].lang ].skills.cpp"></span>
+                <span>AI Fine-Tuning</span>
+                <span>60%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-blue-500 h-full" style="width: 50%;"></div>
+                <div class="h-full bg-gradient-to-r from-indigo-500 to-cyan-300" style="width: 60%;"></div>
             </div>
         </div>
     </div>
 </section>
+
 
 <!--
   ========================================
