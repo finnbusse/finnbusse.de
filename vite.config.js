@@ -1,14 +1,16 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    root: "public", // Setzt den Root auf das Verzeichnis mit der index.html
-    base: "./", // Stellt sicher, dass relative Pfade verwendet werden
+    root: "public", // Entwicklungs-Root ist public
+    base: "./", // Verwende relative Pfade für Assets
     build: {
-        outDir: "../dist", // Der Build-Output landet im dist-Ordner (außerhalb von public)
-        emptyOutDir: true, // Löscht dist vor jedem neuen Build
-        assetsDir: "static", // Speichert alle Assets in dist/static/
-    },
-    server: {
-        open: true, // Öffnet die App automatisch im Browser
-    },
+        outDir: "../dist", // Build-Output wird in dist gespeichert
+        emptyOutDir: true, // Leert den dist-Ordner vor jedem neuen Build
+        assetsDir: "static", // Alle Assets werden in dist/static gespeichert
+        rollupOptions: {
+            input: {
+                main: "./public/index.html", // Haupt-HTML
+            },
+        },
+    }
 });
