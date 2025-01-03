@@ -1,19 +1,21 @@
 {
   "name": "finnbusse.de",
   "version": "1.0.0",
-  "description": "Finn Busse",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"npx tailwindcss -i ./src/css/styles.css -o ./public/styles/styles.css --watch\"",
-    "build": "vite build && npx tailwindcss -i ./src/css/styles.css -o ./dist/styles/styles.css && npx cpx ./src/css/custom.css ./dist/styles/",
+    "build": "vite build && npx tailwindcss -i ./src/css/styles.css -o ./dist/styles/styles.css && cp ./src/css/custom.css ./dist/styles/custom.css",
+
     "preview": "vite preview"
   },
+
+  "keywords": [],
   "author": "Finn Busse",
   "license": "ISC",
+  "description": "",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "concurrently": "^7.6.0",
-    "cpx": "^1.2.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.7"
