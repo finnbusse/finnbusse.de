@@ -1,0 +1,134 @@
+/* =======================
+   Custom Animations & Styles
+   ======================= */
+
+/* ---- Container & Basics ---- */
+.typing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/*
+   - inline-block => verhindert Zeilenbruch
+   - white-space: nowrap => kein automatischer Zeilenumbruch
+   - overflow: hidden => alles was über die Breite hinausgeht, wird abgeschnitten
+   - position: relative => Platz für Cursor (via ::after)
+*/
+.typing {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* ---- Cursor-Effekt ---- */
+.typing::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #666;
+    margin-left: 4px;
+    animation: blinkCursor 0.7s infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
+/* ---- Farbvarianten ---- */
+.color-1 { color: #1E90FF; }
+.color-2 { color: #32CD32; }
+.color-3 { color: #FF6347; }
+.color-4 { color: #FF9900; }
+
+/* ---- Boxes, Timelines, Projects etc. ---- */
+.category-box {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 40px;
+    margin: 120px auto;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.category-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.timeline {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+}
+
+.timeline-content {
+    padding: 10px 20px;
+    background-color: #FFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #1E40AF;
+}
+
+.timeline-content p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-box {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.project-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.project-box-content {
+    padding: 15px;
+}
+
+.project-box-content h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.project-box-content p {
+    font-size: 0.9rem;
+    color: #6b7280;
+}

@@ -1,129 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-    <style>
-        /* Typing Animation */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Finn Busse</title>
 
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
-
-        .typing-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f3f4f6;
-        }
-
-        .typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid;
-            font-weight: bold;
-            font-size: 1.5rem;
-            animation: typing 3s steps(20, end) infinite, blink 0.7s step-end infinite;
-        }
-
-        .color-1 { color: #1E90FF; }
-        .color-2 { color: #32CD32; }
-        .color-3 { color: #FF6347; }
-        .color-4 { color: #FF9900; }
-
-        .category-box {
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 40px;
-            margin: 120px auto; /* Mehr Abstand */
-            width: 90%;
-            max-width: 1000px;
-        }
-
-        .category-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .timeline {
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-
-        .timeline-item {
-            margin-bottom: 20px;
-        }
-
-        .timeline-content {
-            padding: 10px 20px;
-            background-color: #FFF;
-            border: 1px solid #E5E7EB;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-content h3 {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0;
-            color: #1E40AF;
-        }
-
-        .timeline-content p {
-            margin: 5px 0 0;
-            font-size: 0.9rem;
-            color: #6B7280;
-        }
-
-        .project-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-box {
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            width: 300px;
-        }
-
-        .project-box img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .project-box-content {
-            padding: 15px;
-        }
-
-        .project-box-content h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .project-box-content p {
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-    </style>
+    <!-- Tailwind & Custom CSS -->
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/custom.css" />
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="relative text-gray-800 font-sans">
+
+<!-- FIXED Hintergrund-Layer -->
+<!--
+  Dieses Div ist "fixed" + "inset-0" => immer bildschirmfüllend,
+  -z-10 => liegt hinter allem,
+  so bleibt es sichtbar beim Scrollen.
+-->
+<div
+        class="fixed inset-0 -z-10 w-full h-full
+           bg-white
+           bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),
+               linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
+           bg-[size:6rem_4rem]"
+>
+    <!-- Zusätzliche Radial-Gradient-Fläche -->
+    <div class="absolute inset-0
+                bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]">
+    </div>
+</div>
+
+
+
 <!-- Navigation -->
 <nav class="bg-white shadow-md fixed w-full z-50 top-0">
     <div class="container mx-auto px-4">
@@ -135,11 +43,12 @@
     </div>
 </nav>
 
-
-<!-- Header with Typing Animation -->
+<!-- Header mit Typing-Animation -->
 <header class="typing-container">
     <h1 class="text-6xl font-bold text-blue-500 mb-4">Hi, I'm Finn</h1>
-    <p class="text-3xl">I am a <span id="typing-text" class="typing"></span></p>
+    <p class="text-3xl">
+        I am a <span id="typing-text" class="typing"></span>
+    </p>
 </header>
 
 <!-- About Me Section -->
@@ -149,20 +58,32 @@
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-content">
-                <h3>2025 – Abitur</h3>
+                <h3>vsl. 2027 – Abitur</h3>
                 <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
-                <h3>2022 – Beginn der Oberstufe</h3>
+                <h3>2024-heute – Gymnasiale Oberstufe</h3>
                 <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
             </div>
         </div>
         <div class="timeline-item">
             <div class="timeline-content">
-                <h3>2016 – Schulbeginn</h3>
+                <h3>Juni 2024 – Zweiwöchiges Schülerbetriebspraktikum</h3>
+                <p>Cercare Medical, Århus, Denmark</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>2018-heute – Gymnasium</h3>
                 <p>Christian-Dietrich-Grabbe-Gymnasium, Detmold</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <h3>2014-2018 – Grundschule</h3>
+                <p>.elementary_school, Detmold</p>
             </div>
         </div>
     </div>
@@ -173,17 +94,25 @@
     <h2 class="category-title">Projekte</h2>
     <div class="project-grid">
         <div class="project-box">
-            <img src="https://via.placeholder.com/300x150" alt="Project 1">
+            <img src="https://via.placeholder.com/300x150" alt="Project 1" />
             <div class="project-box-content">
                 <h3>Projekt 1: Portfolio-Website</h3>
-                <p>Erstelle eine moderne Portfolio-Website.</p>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua.
+                </p>
             </div>
         </div>
         <div class="project-box">
-            <img src="https://via.placeholder.com/300x150" alt="Project 2">
+            <img src="assets/GrabbeAI.png" alt="GrabbeAI" />
             <div class="project-box-content">
-                <h3>Projekt 2: KI-Chatbot</h3>
-                <p>Entwicklung eines intelligenten Chatbots.</p>
+                <h3>GrabbeAI</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore
+                    et dolore magna aliquyam erat, sed diam voluptua.
+                </p>
             </div>
         </div>
     </div>
@@ -196,28 +125,28 @@
         <div>
             <div class="flex justify-between">
                 <span>Python</span>
-                <span>80%</span>
+                <span>75%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-blue-500 h-full" style="width: 80%;"></div>
+                <div class="bg-blue-500 h-full" style="width: 75%;"></div>
             </div>
         </div>
         <div>
             <div class="flex justify-between">
                 <span>Java</span>
-                <span>60%</span>
+                <span>40%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-green-500 h-full" style="width: 60%;"></div>
+                <div class="bg-green-500 h-full" style="width: 40%;"></div>
             </div>
         </div>
         <div>
             <div class="flex justify-between">
                 <span>Kotlin</span>
-                <span>50%</span>
+                <span>30%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-yellow-500 h-full" style="width: 50%;"></div>
+                <div class="bg-yellow-500 h-full" style="width: 30%;"></div>
             </div>
         </div>
         <div>
@@ -232,10 +161,19 @@
         <div>
             <div class="flex justify-between">
                 <span>JavaScript</span>
-                <span>25%</span>
+                <span>20%</span>
             </div>
             <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
-                <div class="bg-orange-500 h-full" style="width: 25%;"></div>
+                <div class="bg-orange-500 h-full" style="width: 20%;"></div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between">
+                <span>C++</span>
+                <span>geplant - 0%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div class="bg-blue-950-500 h-full" style="width: 0%;"></div>
             </div>
         </div>
     </div>
@@ -246,27 +184,7 @@
     <p>&copy; 2025 Finn Busse. Alle Rechte vorbehalten.</p>
 </footer>
 
-<script>
-    // Typing Animation
-    const typingText = document.getElementById("typing-text");
-    const texts = [
-        { text: "Web Developer", color: "color-1" },
-        { text: "Python Developer", color: "color-2" },
-        { text: "AI Enthusiast", color: "color-3" },
-        { text: "Student", color: "color-4" }
-    ];
-
-    let index = 0;
-
-    function typeNext() {
-        const { text, color } = texts[index];
-        typingText.textContent = text;
-        typingText.className = `typing ${color}`;
-        index = (index + 1) % texts.length;
-    }
-
-    setInterval(typeNext, 3000);
-    typeNext();
-</script>
+<!-- Schöne Typing-Animation -->
+<script type="module" src="./static/js/typing.js"></script>
 </body>
 </html>
