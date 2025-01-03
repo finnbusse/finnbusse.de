@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Finn Busse</title>
 
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-D49SLt7Z.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-CCPxHs0p.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16-Brz9005c.png">
+    <link rel="manifest" href="/assets/site-COY6tq4K.webmanifest">
+
     <!--
       1) Tailwind generiertes CSS: ./styles/styles.css
       2) Dein eigenes Custom-CSS: ./styles/custom.css
@@ -13,21 +19,18 @@
     <!-- Font Awesome für das Herz-Icon im Footer -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- AlpineJS für das Language-Dropdown -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
     <!--
-      EXTERNE SCRIPTE:
-      1) translations.js (alle Übersetzungen + translationSwitcher-Funktion)
-      2) theme.js (Dark-/Light-Preload + Toggle-Button-Logik)
-      3) typing.js (Typing-Animation)
-
-      Reihenfolge:
-      - translations.js definiert "translationSwitcher()"
-      - theme.js enthält Preload + Button-Logik
-      - typing.js wie gehabt
+      JS-Dateien (keine Inline-Scripts):
+        1) translations.js (definiert window.TRANSLATIONS)
+        2) translationSwitcher.js (definiert window.translationSwitcher())
+        3) AlpineJS
+        4) theme.js (Dark/Light)
+        5) typing.js (Typing)
+      Reihenfolge ist wichtig!
     -->
     <script src="./static/js/translations.js" defer></script>
+    <script src="./static/js/translationSwitcher.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="./static/js/theme.js" defer></script>
     <script src="./static/js/typing.js" defer></script>
   <link rel="stylesheet" crossorigin href="/assets/index-BgwDAwFo.css">
@@ -68,13 +71,12 @@
 
 <!--
   ========================================
-  NAVBAR: Transparent, schattenlos
-  Zentrierte Buttons, rechts Language & Darkmode
+  NAVBAR
   ========================================
 -->
 <nav class="fixed w-full top-0 h-16 flex items-center bg-transparent z-50">
     <div class="container mx-auto flex justify-center items-center relative h-full">
-        <!-- Link-Buttons zentriert -->
+        <!-- Link-Buttons (zentriert) -->
         <ul class="flex space-x-8">
             <li>
                 <button
@@ -143,6 +145,7 @@
                     <span class="inline-block mr-2" x-text="switcher.countries[switcher.selected].emoji"></span>
                     <span class="fa fa-chevron-down"></span>
                 </button>
+
                 <!-- Dropdown Menu -->
                 <div
                         class="bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100
@@ -180,7 +183,7 @@
                 </div>
             </div>
 
-            <!-- Dark/Light Toggle Button (Tailwind), mit ID = 'darkmode-btn' -->
+            <!-- Dark/Light Toggle Button (ID = 'darkmode-btn') -->
             <button
                     id="darkmode-btn"
                     class="h-10 px-4 py-2 border rounded text-sm
@@ -296,7 +299,7 @@
 
 <!--
   ========================================
-  PROJECTS (vollständig)
+  PROJECTS
   ========================================
 -->
 <section id="projects" class="category-box bg-white dark:bg-gray-700 dark:text-white">
@@ -348,7 +351,7 @@
 
 <!--
   ========================================
-  SKILL MATRIX (vollständig)
+  SKILL MATRIX
   ========================================
 -->
 <section id="skills" class="category-box bg-white dark:bg-gray-700 dark:text-white">
