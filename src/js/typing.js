@@ -1,10 +1,12 @@
 const typingText = document.getElementById("typing-text");
 
 const texts = [
-    { text: "Web Developer",    gradient: "from-blue-500 to-blue-300" },
-    { text: "Python Developer", gradient: "from-green-500 to-green-300" },
-    { text: "AI Enthusiast",    gradient: "from-red-500 to-orange-300" },
-    { text: "Student",          gradient: "from-purple-500 to-purple-300" }
+    { text: "Machine Learning Expert", gradient: "from-yellow-500 to-pink-300" },
+    { text: "Python Problem-Solver", gradient: "from-blue-600 to-blue-300" },
+    { text: "AI Enthusiast", gradient: "from-red-500 to-orange-300" },
+    { text: "Web Developer", gradient: "from-green-500 to-teal-300" },
+    { text: "High-School Student", gradient: "from-purple-500 to-indigo-300" },
+
 ];
 
 let textIndex = 0;
