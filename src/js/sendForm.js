@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const subject = document.getElementById('subject').value
         const message = document.getElementById('message').value
 
+        // Optional: Honeypot-Feld überprüfen (Spam-Schutz)
+        const honeypot = document.getElementById('honeypot')?.value
+        if (honeypot) {
+            // Bot erkannt, ignoriere die Anfrage
+            return
+        }
+
         try {
             const response = await fetch('https://contact-form.titusderhund.workers.dev/', { // Absolute URL zu deinem Worker
                 method: 'POST',
