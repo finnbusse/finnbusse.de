@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const texts = [
-        { text: "Machine Learning Expert", gradient: "from-yellow-500 to-pink-300" },
-        { text: "Python Problem-Solver", gradient: "from-blue-600 to-blue-300" },
-        { text: "AI Enthusiast", gradient: "from-red-500 to-orange-300" },
-        { text: "Web Developer", gradient: "from-green-500 to-teal-300" },
-        { text: "High-School Student", gradient: "from-purple-500 to-indigo-300" },
+        { text: "Machine Learning Expert", gradient: "from-yellow-500 to-pink-300", size: "text-6xl" },
+        { text: "Python Problem-Solver", gradient: "from-blue-600 to-blue-300", size: "text-5xl" }, // Unterschiedliche Größe
+        { text: "AI Enthusiast", gradient: "from-red-500 to-orange-300", size: "text-6xl" },
+        { text: "Web Developer", gradient: "from-green-500 to-teal-300", size: "text-6xl" },
+        { text: "High-School Student", gradient: "from-purple-500 to-indigo-300", size: "text-6xl" },
     ];
 
-    const typingSpeed = 150; // Millisekunden pro Zeichen
-    const deletingSpeed = 100; // Millisekunden pro Zeichen beim Löschen
+    const typingSpeed = 200; // Millisekunden pro Zeichen
+    const deletingSpeed = 150; // Millisekunden pro Zeichen beim Löschen
     const delayBetweenTexts = 2000; // Millisekunden Verzögerung nach vollständigem Tippen
 
     let currentTextIndex = 0;
@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateGradient(newGradient) {
         // Entferne alle bisherigen 'from-' und 'to-' Klassen
+        typingElement.className = 'bg-clip-text text-transparent bg-gradient-to-r ${current.gradient}';
         typingElement.classList.forEach(cls => {
             if (cls.startsWith("from-") || cls.startsWith("to-")) {
                 typingElement.classList.remove(cls);

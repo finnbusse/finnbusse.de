@@ -64,6 +64,17 @@ body {
 }
 
 /* Tipp-Animation */
+/* ---- Typing Container ---- */
+.typing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Tipp-Animation */
 .typing {
     display: inline-block;
     position: relative;
@@ -88,13 +99,6 @@ body {
 @keyframes blinkCursor {
     0%, 100% { opacity: 1; }
     50%      { opacity: 0; }
-}
-
-/* Optional: Responsive Schriftgrößen */
-@media (min-width: 768px) {
-    .typing {
-        font-size: 2rem;
-    }
 }
 
 
