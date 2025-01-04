@@ -51,6 +51,8 @@ body {
     background: radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%);
 }
 
+/* /src/css/custom.css */
+
 /* ---- Typing Container ---- */
 .typing-container {
     display: flex;
@@ -86,6 +88,15 @@ body {
 @keyframes blinkCursor {
     0%, 100% { opacity: 1; }
     50%      { opacity: 0; }
+}
+
+/* Optional: Responsive Schriftgrößen */
+@media (min-width: 768px) {
+    .typing {
+        font-size: 2rem;
+    }
+}
+
 }
 
 /* Verschiedene Farben für die Tippwörter */

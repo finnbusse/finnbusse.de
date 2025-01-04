@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const typingText = document.getElementById("typing-text");
+// /src/js/typing.js
 
-    // Define text entries with gradients
+document.addEventListener("DOMContentLoaded", () => {
+    const typingElement = document.getElementById("typing-text");
+
     const texts = [
         { text: "Machine Learning Expert", gradient: "from-yellow-500 to-pink-300" },
         { text: "Python Problem-Solver", gradient: "from-blue-600 to-blue-300" },
@@ -10,38 +11,61 @@ document.addEventListener("DOMContentLoaded", () => {
         { text: "High-School Student", gradient: "from-purple-500 to-indigo-300" },
     ];
 
-    let textIndex = 0; // Tracks the current text
-    let charIndex = 0; // Tracks the current character
-    let isDeleting = false; // Determines typing or deleting state
-    const typingSpeed = 80; // Speed of typing
-    const deletingSpeed = 50; // Speed of deleting
-    const holdTime = 1500; // Time to hold full text before deleting
+    const typingSpeed = 150; // Millisekunden pro Zeichen
+    const deletingSpeed = 100; // Millisekunden pro Zeichen beim Löschen
+    const delayBetweenTexts = 2000; // Millisekunden Verzögerung nach vollständigem Tippen
 
-    function updateTyping() {
-        if (!typingText) return;
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
 
-        const current = texts[textIndex];
-        typingText.className = `text-6xl text-transparent bg-clip-text bg-gradient-to-r ${current.gradient}`;
-        const fullText = current.text;
-
-        // Type or delete characters
-        if (!isDeleting) {
-            charIndex++;
-            typingText.textContent = fullText.slice(0, charIndex);
-            if (charIndex === fullText.length) {
-                setTimeout(() => (isDeleting = true), holdTime); // Hold text
+    function updateGradient(newGradient) {
+        // Entferne alle bisherigen 'from-' und 'to-' Klassen
+        typingElement.classList.forEach(cls => {
+            if (cls.startsWith("from-") || cls.startsWith("to-")) {
+                typingElement.classList.remove(cls);
             }
-        } else {
-            charIndex--;
-            typingText.textContent = fullText.slice(0, charIndex);
-            if (charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length; // Move to next text
-            }
-        }
+        });
 
-        setTimeout(updateTyping, isDeleting ? deletingSpeed : typingSpeed);
+        // Füge die neuen Gradient-Klassen hinzu
+        const [fromClass, toClass] = newGradient.split(" ");
+        typingElement.classList.add(fromClass, toClass);
     }
 
-    updateTyping();
+    function type() {
+        const currentTextObj = texts[currentTextIndex];
+        const fullText = currentTextObj.text;
+
+        if (!isDeleting) {
+            // Typen
+            typingElement.textContent = fullText.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+
+            if (currentCharIndex === fullText.length) {
+                // Vollständig getippt
+                isDeleting = true;
+                setTimeout(type, delayBetweenTexts);
+            } else {
+                setTimeout(type, typingSpeed);
+            }
+        } else {
+            // Löschen
+            typingElement.textContent = fullText.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+
+            if (currentCharIndex === 0) {
+                // Vollständig gelöscht
+                isDeleting = false;
+                currentTextIndex = (currentTextIndex + 1) % texts.length;
+                updateGradient(texts[currentTextIndex].gradient);
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(type, deletingSpeed);
+            }
+        }
+    }
+
+    // Initiale Gradient-Klasse setzen
+    updateGradient(texts[currentTextIndex].gradient);
+    type();
 });
