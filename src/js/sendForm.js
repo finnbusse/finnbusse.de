@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Deine Nachricht wurde erfolgreich gesendet!');
                 form.reset();
             } else {
-                alert('Es gab ein Problem beim Senden deiner Nachricht. Bitte versuche es später erneut.');
+                alert(`Fehler: ${result.error}`);
                 console.error('Error:', result.error);
             }
         } catch (error) {
