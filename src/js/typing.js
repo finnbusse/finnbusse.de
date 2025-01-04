@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { text: "High-School Student", gradient: "from-purple-500 to-indigo-300", size: "text-6xl" },
     ];
 
-    const typingSpeed = 200; // Millisekunden pro Zeichen
-    const deletingSpeed = 150; // Millisekunden pro Zeichen beim Löschen
+    const typingSpeed = 120; // Millisekunden pro Zeichen
+    const deletingSpeed = 100; // Millisekunden pro Zeichen beim Löschen
     const delayBetweenTexts = 2000; // Millisekunden Verzögerung nach vollständigem Tippen
 
     let currentTextIndex = 0;
