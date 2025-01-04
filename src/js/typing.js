@@ -3,6 +3,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const typingElement = document.getElementById("typing-text");
 
+    if (!typingElement) {
+        console.error("Element mit ID 'typing-text' nicht gefunden.");
+        return;
+    }
+
     const texts = [
         { text: "Machine Learning Expert", gradient: "from-yellow-500 to-pink-300" },
         { text: "Python Problem-Solver", gradient: "from-blue-600 to-blue-300" },
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fullText = currentTextObj.text;
 
         if (!isDeleting) {
-            // Typen
+            // Tippen
             typingElement.textContent = fullText.substring(0, currentCharIndex + 1);
             currentCharIndex++;
 
